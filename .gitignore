@@ -1,0 +1,8 @@
+.venv/
+models/*.onnx
+!models/yunet.onnx
+models/*.part
+__pycache__/
+*.pyc
+.DS_Store
+.kurgu-*/
