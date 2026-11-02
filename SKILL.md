@@ -99,5 +99,4 @@ Yüz konumu satırlarını (yörünge merkezi, belgesel kaydırması, pencere of
 - **Kaynağa dokunma.** Keskinlik, filtre ya da renk ayarı yapma. Çıktı kaynağın rengini ve sesini korur.
 - **Zoom 2x'i geçmez**, böylece görüntü net kalır.
 - Efektler plandaki sırayla uygulanır. Kamera efektlerini (`kilitlen`, `yaklas`, `yavas-yaklas`, `manset`) aynı anda üst üste koyma.
-- Bu skill sadece görsel ekler. Ses efekti ve altyazı kullanıcıya kalmıştır.
 - Bunlar başlangıç sürümleri. Kullanıcı bir Reels'le karşılaştırırsa bunu açıkça söyle.

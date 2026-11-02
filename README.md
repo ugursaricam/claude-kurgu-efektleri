@@ -83,7 +83,6 @@ Bütün efektler yüzünü takip eder. Yüzünü kapatacak her şey başının a
 ## Açık konuşalım
 - Bunlar **başlangıç sürümleri**. Benim Reels'imdeki kurguyla birebir aynı değiller; o kurguda ses tasarımı ve elle ayarlanmış zamanlama da var.
 - Claude taslak çıkarır, sen onaylarsın. Paylaşmadan önce sonucu izle.
-- Ses efekti ve altyazı eklenmez. Onları CapCut'ta ekle.
 - Rengin olduğu gibi kalır: keskinlik, filtre ya da renk ayarı yapılmaz.
 
 ## Bir şey ters giderse
