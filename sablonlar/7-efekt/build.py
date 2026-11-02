@@ -361,7 +361,7 @@ def blok_arayuz(k, B0, cmd, desc, part, son=False):
     T("#rbar", "{opacity:0}", "{opacity:1}", tg + 0.25, 0.2)
     T("#tth", "{opacity:0,y:30}", "{opacity:1,y:0}", tg + 0.08, 0.25)
     S(f"#ch{k}", '{display:"block"}', tg + 0.08); S(f"#ch{k}", '{display:"none"}', B0 + B if not son else DUR)
-    S(f"#ed{k}", '{display:"flex"}', tg + 0.2); S(f"#ed{k}", '{display:"none"}', B0 + B if not son else DUR)
+    S(f"#ed{k}", '{display:"flex"}', tg + 0.2); S(f"#ed{k}", '{display:"none"}', B0 + B if not son else tg + 0.35)
     return tg
 
 scenes = ""
