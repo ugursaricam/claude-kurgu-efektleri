@@ -58,28 +58,28 @@ Listeyi görmek için: `--liste`.
 | 1 | `cam-paneller` | Buzlu cam paneller başın arkasında süzülür, altta "Claude ile düzenlendi" | `metin` (büyük sayı), `etiket`, `ad`, `kullanici`, `degerler` (grafik, `\|` ile), `grafik` (başlık), `halka`, `halka_etiket` |
 | 2 | `belgesel` | Siyah-beyaz kişi, başın arkasında renkli daire, satır satır başlık, isim bandı, takip tıklaması | `metin` (satırlar `\|` ile; son kelime renkli), `renk`, `ad`, `kullanici` |
 | 3 | `yorunge` | Reels'ler başın etrafında döner; tepede arkada, önde önde | `sayi`, `hiz` (derece/sn), `boyut` |
-| 4 | `arka-kelime` | Dev kelime arkaya düşer | `metin`, `renk`, `font` (`serif`) |
+| 4 | `grafik` | Üstte grafik, altta pencerede kişi, baş pencereden taşar | `degerler`, `yazilar`, `etiketler` (hepsi `\|`), `baslik` (2 satır `\|`), `ortalama` |
 | 5 | `spot` | Işıklar söner, kişi aydınlık, arkada neon yazı | `metin`, `renk` |
-| 6 | `led-tabela` | Karartma + arkada kendini yazan LED tabela | `metin` (satırlar `\|`), `renk` |
-| 7 | `profil-duvari` | Reels ızgarası arkadaki duvarı doldurur, sayaç artar | `baslangic`, `son` (ör. `24,1B`), `etiket` |
-| 8 | `gurultu` | Reels'ler başın arkasına yığılır | `sayi` |
-| 9 | `tus-yagmuru` | Klavye tuşları arkaya yağar | `metin` (tuşlar `\|`), `sayi` |
-| 10 | `yavas-yaklas` | Yavaş yakınlaşma, arka plan bulanık, kişi net | `zoom` (vars. 1.4, en çok 2), `bulaniklik` |
-| 11 | `kilitlen` | Parantezler yüze kilitlenir, kamera takip eder | `zoom` (vars. 1.35), `metin` (etiket) |
-| 12 | `yaklas` | Tek kelimede hızlı yakınlaşma | `zoom` (vars. 1.4), `hiz` |
-| 13 | `manset` | Yakınlaşma + iki satır manşet, ikincisi beyaz kutuda | `metin` (2 satır `\|`), `zoom`, `y` (px) |
-| 14 | `liste` | Görev listesi, adımlar yeşil tik alır | `metin` (`adım::etiket\|…`), `baslik` |
-| 15 | `yorum-kutusu` | Yorum kutusuna kelime yazılır, paylaşılır | `metin`, `kullanici` |
-| 16 | `takip` | Takip et → Takiptesin | `an` (saniye), `ad`, `kullanici`, `renk`, `y` (0-1) |
-| 17 | `damga` | Kırmızı damga ekrana iner | `metin`, `renk`, `aci`, `y` (0-1) |
-| 18 | `geri-sayim` | Başın üstünde 3-2-1 çevirmeli saat | `kac` |
+| 6 | `zaman-cizelgesi` | Üstte kurgu ekranı ve oynatma çizgisi, altta kişi | `baslik` (2 parça `\|`), `metin` (`satır::değer\|…`) |
+| 7 | `gurultu` | Reels'ler başın arkasına yığılır | `sayi` |
+| 8 | `arka-kelime` | Dev kelime arkaya düşer | `metin`, `renk`, `font` (`serif`) |
+| 9 | `led-tabela` | Karartma + arkada kendini yazan LED tabela | `metin` (satırlar `\|`), `renk` |
+| 10 | `profil-duvari` | Reels ızgarası arkadaki duvarı doldurur, sayaç artar | `baslangic`, `son` (ör. `24,1B`), `etiket` |
+| 11 | `hikaye-kartlari` | Süre, görsel ve yorum kartları düşer, başlık başın üstünde | `sure`, `kart` (2 satır `\|`), `yorumlar` (`\|`), `baslik` (`\|`) |
+| 12 | `liste` | Görev listesi, adımlar yeşil tik alır | `metin` (`adım::etiket\|…`), `baslik` |
+| 13 | `siralama` | Tier list, Claude S'ye uçar | `baslik` (`\|`), `oge`, `digerleri` (`\|`) |
+| 14 | `bolunmus-manset` | Manşet kartı iner, kişi alt pencerede, baş taşar | `metin` (satırlar `\|`), `vurgu`, `etiket` |
+| 15 | `tus-yagmuru` | Klavye tuşları arkaya yağar | `metin` (tuşlar `\|`), `sayi` |
+| 16 | `kilitlen` | Parantezler yüze kilitlenir, kamera takip eder | `zoom` (vars. 1.35), `metin` (etiket) |
+| 17 | `manset` | Yakınlaşma + iki satır manşet, ikincisi beyaz kutuda | `metin` (2 satır `\|`), `zoom`, `y` (px) |
+| 18 | `yorum-kutusu` | Yorum kutusuna kelime yazılır, paylaşılır | `metin`, `kullanici` |
 | 19 | `mesajlar` | Mesaj bildirimleri sırayla düşer | `metin` (mesajlar `\|`), `baslik`, `y` (0-1) |
 | 20 | `anahtarlar` | iPhone anahtarları tek tek açılır | `metin` (satırlar `\|`), `renk` |
-| 21 | `siralama` | Tier list, Claude S'ye uçar | `baslik` (`\|`), `oge`, `digerleri` (`\|`) |
-| 22 | `grafik` | Üstte grafik, altta pencerede kişi, baş pencereden taşar | `degerler`, `yazilar`, `etiketler` (hepsi `\|`), `baslik` (2 satır `\|`), `ortalama` |
-| 23 | `bolunmus-manset` | Manşet kartı iner, kişi alt pencerede, baş taşar | `metin` (satırlar `\|`), `vurgu`, `etiket` |
-| 24 | `zaman-cizelgesi` | Üstte kurgu ekranı ve oynatma çizgisi, altta kişi | `baslik` (2 parça `\|`), `metin` (`satır::değer\|…`) |
-| 25 | `hikaye-kartlari` | Süre, görsel ve yorum kartları düşer, başlık başın üstünde | `sure`, `kart` (2 satır `\|`), `yorumlar` (`\|`), `baslik` (`\|`) |
+| 21 | `takip` | Takip et → Takiptesin | `an` (saniye), `ad`, `kullanici`, `renk`, `y` (0-1) |
+| 22 | `damga` | Kırmızı damga ekrana iner | `metin`, `renk`, `aci`, `y` (0-1) |
+| 23 | `geri-sayim` | Başın üstünde 3-2-1 çevirmeli saat | `kac` |
+| 24 | `yavas-yaklas` | Yavaş yakınlaşma, arka plan bulanık, kişi net | `zoom` (vars. 1.4, en çok 2), `bulaniklik` |
+| 25 | `yaklas` | Tek kelimede hızlı yakınlaşma | `zoom` (vars. 1.4), `hiz` |
 
 İngilizce adlar da çalışır: `orbit`, `spotlight`, `glass-widgets`, `locked-on`, `lean-in`, `backdrop-word`, `comment-box`, `tap`, `reject-stamp`, `countdown-flip`, `messages`, `apple-toggles`, `tier-list`, `timeline`, `split-headline`, `checklist`, `led-sign`, `slow-push`, `noise`, `shortcut-rain`, `profile-wall`, `headline-box`.
 

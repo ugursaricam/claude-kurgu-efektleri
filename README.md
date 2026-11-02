@@ -44,28 +44,28 @@ Birden fazla efekti tek seferde isteyebilirsin: *"6-10 arası kilitlen, 10-13 ar
 | 1 | `cam-paneller` | Buzlu cam paneller başının arkasında süzülür, altta "Claude ile düzenlendi" yazar |
 | 2 | `belgesel` | Siyah-beyaz sen, başının arkasında turuncu daire, satır satır başlık, isim bandı ve Takip et → Takiptesin |
 | 3 | `yorunge` | Reels'lerin başının etrafında döner: tepeden geçerken arkanda, önden geçerken önünde |
-| 4 | `arka-kelime` | Dev bir kelime arkana düşer |
+| 4 | `grafik` | Üstte gerçek izlenme grafiği, altta pencerede sen; başın pencereden taşar |
 | 5 | `spot` | Işıklar söner, sen aydınlıkta kalırsın, arkanda neon bir yazı yanar |
-| 6 | `led-tabela` | Işıklar düşer, arkanda parlayan bir LED tabela kendini yazar |
-| 7 | `profil-duvari` | Reels ızgaran arkandaki duvarı doldurur, sayaç artar |
-| 8 | `gurultu` | Reels'ler başının arkasına üst üste yığılır |
-| 9 | `tus-yagmuru` | Klavye tuşları arkana yağar |
-| 10 | `yavas-yaklas` | Yavaş sinematik yaklaşma: oda bulanıklaşır, sen net kalırsın |
-| 11 | `kilitlen` | Köşe parantezleri yüzüne kilitlenir, kamera seni takip eder |
-| 12 | `yaklas` | Tek kelimede hızlı yakınlaşma |
-| 13 | `manset` | Yakınlaşma ve iki satırlık manşet; ikinci satır beyaz kutuda |
-| 14 | `liste` | Claude'un görev listesi: adımlar tek tek yeşil tik alır |
-| 15 | `yorum-kutusu` | Instagram yorum kutusuna bir kelime yazılır ve paylaşılır |
-| 16 | `takip` | Takip et butonu çıkar ve Takiptesin'e döner |
-| 17 | `damga` | Kocaman kırmızı bir damga ekrana iner |
-| 18 | `geri-sayim` | Başının üstünde 3, 2, 1 çevirmeli saat |
+| 6 | `zaman-cizelgesi` | Üstte kurgu programı ve ilerleyen oynatma çizgisi, altta sen |
+| 7 | `gurultu` | Reels'ler başının arkasına üst üste yığılır |
+| 8 | `arka-kelime` | Dev bir kelime arkana düşer |
+| 9 | `led-tabela` | Işıklar düşer, arkanda parlayan bir LED tabela kendini yazar |
+| 10 | `profil-duvari` | Reels ızgaran arkandaki duvarı doldurur, sayaç artar |
+| 11 | `hikaye-kartlari` | Süre, görsel ve yorum kartları yukarıdan düşer, başlık başının üstünde durur |
+| 12 | `liste` | Claude'un görev listesi: adımlar tek tek yeşil tik alır |
+| 13 | `siralama` | Tier list düşer, Claude S'ye uçar |
+| 14 | `bolunmus-manset` | Manşet kartı yukarıdan iner, seni alt yarıya iter; başın pencereden taşar |
+| 15 | `tus-yagmuru` | Klavye tuşları arkana yağar |
+| 16 | `kilitlen` | Köşe parantezleri yüzüne kilitlenir, kamera seni takip eder |
+| 17 | `manset` | Yakınlaşma ve iki satırlık manşet; ikinci satır beyaz kutuda |
+| 18 | `yorum-kutusu` | Instagram yorum kutusuna bir kelime yazılır ve paylaşılır |
 | 19 | `mesajlar` | Mesaj bildirimleri birbiri ardına düşer |
 | 20 | `anahtarlar` | iPhone ayar kartındaki anahtarlar tek tek açılır |
-| 21 | `siralama` | Tier list düşer, Claude S'ye uçar |
-| 22 | `grafik` | Üstte gerçek izlenme grafiği, altta pencerede sen; başın pencereden taşar |
-| 23 | `bolunmus-manset` | Manşet kartı yukarıdan iner, seni alt yarıya iter; başın pencereden taşar |
-| 24 | `zaman-cizelgesi` | Üstte kurgu programı ve ilerleyen oynatma çizgisi, altta sen |
-| 25 | `hikaye-kartlari` | Süre, görsel ve yorum kartları yukarıdan düşer, başlık başının üstünde durur |
+| 21 | `takip` | Takip et butonu çıkar ve Takiptesin'e döner |
+| 22 | `damga` | Kocaman kırmızı bir damga ekrana iner |
+| 23 | `geri-sayim` | Başının üstünde 3, 2, 1 çevirmeli saat |
+| 24 | `yavas-yaklas` | Yavaş sinematik yaklaşma: oda bulanıklaşır, sen net kalırsın |
+| 25 | `yaklas` | Tek kelimede hızlı yakınlaşma |
 
 İngilizce adlar da çalışır (`orbit`, `spotlight`, `glass-widgets`, `locked-on`, `comment-box`, `tier-list`…).
 

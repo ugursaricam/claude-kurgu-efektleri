@@ -673,6 +673,11 @@ def kartlari_hazirla(is_kl, klasor, dur):
     return out
 
 
+SIRA = ("cam-paneller belgesel yorunge grafik spot zaman-cizelgesi gurultu arka-kelime led-tabela profil-duvari hikaye-"
+        "kartlari liste siralama bolunmus-manset tus-yagmuru kilitlen manset yorum-kutusu mesajlar anahtarlar takip dam"
+        "ga geri-sayim yavas-yaklas yaklas").split()
+
+
 def main():
     p = argparse.ArgumentParser(description="25 kurgu efekti")
     p.add_argument("args", nargs="*"); p.add_argument("--plan"); p.add_argument("--bas", type=float); p.add_argument("--bit", type=float)
@@ -681,7 +686,7 @@ def main():
     p.add_argument("--liste", action="store_true")
     a = p.parse_args()
     if a.liste:
-        for i, (k, v) in enumerate(EFEKTLER.items(), 1): print(f"{i:2}. {k:18} {v['aciklama']}")
+        for i, k in enumerate(SIRA, 1): print(f"{i:2}. {k:18} {EFEKTLER[k]['aciklama']}")
         return
     if a.plan:
         plan = json.load(open(a.plan)); video, cikti = a.args[0], a.args[1]; liste = plan.get("efektler", plan.get("effects", []))
