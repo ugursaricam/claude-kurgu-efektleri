@@ -6,7 +6,7 @@ Plan:        python efekt.py --plan plan.json video.mp4 cikti.mp4
 Kontrol:     python efekt.py --plan plan.json video.mp4 kontrol.jpg --kare 4.5,9.2
 Liste:       python efekt.py --liste
 
-Yüz YuNet ile takip edilir; kişi arka plandan ayrılır (hızlı: U2Net insan, --kaliteli: BiRefNet).
+Yüz YuNet ile takip edilir; kişi arka plandan ayrılır (varsayılan: BiRefNet, saç teli net; --hizli: U2Net).
 Animasyonlar HyperFrames + GSAP ile çizilir; çıktı kaynağın rengini birebir korur (bt709) ve
 orijinal sesi aynen taşır.
 """
@@ -128,7 +128,12 @@ def fx_cam(c, e, P):
 .gs{font-size:30px;font-weight:600;display:flex;align-items:center;gap:12px}.gs2{font-size:26px;font-weight:500;opacity:.85;line-height:1.3}
 .gdot{width:16px;height:16px;border-radius:50%;background:#e8644a;display:inline-block}.gbig{font-size:130px;font-weight:800;line-height:1;margin:4px 0 6px}
 .gmono{font:20px Menlo,monospace;opacity:.8;margin:0 0 12px 6px;white-space:nowrap}.gwin{background:#fbf8f3;border-radius:18px;padding:12px 16px;height:250px;position:relative;color:#1d1d1b}
-.gwt{font-size:28px;font-weight:800;margin-top:8px}.gch{position:absolute;left:16px;right:16px;bottom:14px;height:100px;display:flex;align-items:flex-end;gap:10px}.gch i{flex:1}
+.gwt{font-size:28px;font-weight:800;margin-top:8px}.gwd{display:flex;gap:7px}.gwd b{width:12px;height:12px;border-radius:50%}.gwv{font:400 54px Bebas;color:#C9452E;line-height:1}
+.glab{font-size:20px;font-weight:700;letter-spacing:2px;color:#fff;opacity:.85}.gmid{font-size:70px;font-weight:800;line-height:1;margin:4px 0 10px}
+.gred{display:inline-block;background:#E0563B;border-radius:12px;padding:6px 16px;font-size:24px;font-weight:600}
+.gico{width:76px;height:76px;border-radius:18px;background:#E0563B;display:flex;align-items:center;justify-content:center;flex:none}
+.gpb{height:8px;border-radius:4px;background:rgba(255,255,255,.3);margin:22px 0 10px;overflow:hidden}.gpb div{height:100%;width:60%;background:#fff}
+.gctl{display:flex;justify-content:center;align-items:center;gap:56px;font-size:36px}.gch{position:absolute;left:16px;right:16px;bottom:14px;height:100px;display:flex;align-items:flex-end;gap:10px}.gch i{flex:1}
 .gbar{height:16px;border-radius:8px;background:rgba(255,255,255,.3);margin:18px 0 14px;overflow:hidden}.gbf{height:100%;width:71%;background:#fff;border-radius:8px}
 .gname{font-size:32px;font-weight:800;white-space:nowrap}.gav{width:84px;height:84px;border-radius:50%;border:3px solid rgba(255,255,255,.8);object-fit:cover}
 .gring{width:210px;height:210px;border-radius:50%;background:conic-gradient(#3ddc84 300deg,rgba(255,255,255,.3) 0);display:flex;align-items:center;justify-content:center}
@@ -136,46 +141,55 @@ def fx_cam(c, e, P):
 .gpill{position:absolute;left:50%;margin-left:-260px;top:1660px;width:520px;height:104px;border-radius:52px;display:flex;align-items:center;justify-content:center;font-size:42px;font-weight:600;color:#fff;background:rgba(30,26,22,.45);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1.5px solid rgba(255,255,255,.35)}""")
     u = ust / 1.2
     h = f'''<div id="{P}g0" class="gls" style="left:25px;top:{u:.0f}px;width:310px;height:290px;padding:24px 28px"><div class="gs"><b class="gdot"></b>Claude</div><div class="gbig">{esc(buyuk)}</div><div class="gs2">{esc(etiket)}</div></div>
-<div id="{P}g1" class="gls" style="left:25px;top:{u + 311:.0f}px;width:310px;height:330px;padding:18px"><div class="gmono">artifact · grafik.html</div><div class="gwin"><div class="gwt">{esc(e.get("grafik", "Bu hafta"))}</div><div class="gch">{bars}</div></div></div>
-<div id="{P}g2" class="gls" style="left:545px;top:{u:.0f}px;width:330px;height:170px;padding:22px 26px"><div class="gs"><b class="gdot" style="background:#ff4b3e"></b>Render ediliyor</div><div class="gbar"><div id="{P}gb" class="gbf"></div></div><div class="gs2">1080p · kayıpsız renk</div></div>
-<div id="{P}g3" class="gls" style="left:545px;top:{u + 191:.0f}px;width:330px;height:150px;padding:22px 26px;display:flex;align-items:center"><div style="flex:1"><div class="gname">{esc(ad)}</div><div class="gs2">{esc(kul)}</div></div><img src="{c.kart(0)}" class="gav"></div>
-<div id="{P}g4" class="gls" style="left:605px;top:{u + 362:.0f}px;width:270px;height:270px;border-radius:50%;display:flex;align-items:center;justify-content:center"><div class="gring"><div>{esc(e.get("halka", "50"))}<br><span>{esc(e.get("halka_etiket", "fps"))}</span></div></div></div>'''
+<div id="{P}g1" class="gls" style="left:25px;top:{u + 311:.0f}px;width:310px;height:330px;padding:18px"><div class="gmono">artifact · grafik.html</div><div class="gwin"><div class="gwd"><b style="background:#ff5f57"></b><b style="background:#febc2e"></b><b style="background:#28c840"></b></div><div class="gwt">{esc(e.get("grafik", "Bu hafta"))}</div><div class="gwv">{esc(e.get("grafik_deger", ""))}</div><div class="gch">{bars}</div></div></div>
+<div id="{P}g2" class="gls" style="left:25px;top:{u + 661:.0f}px;width:310px;height:180px;padding:20px 26px"><div class="glab">{esc(e.get("kutu_etiket", "KAYDETME")).upper()}</div><div class="gmid">{esc(e.get("kutu", "12B"))}</div><div class="gred">{esc(e.get("kutu_alt", "en iyi Reels"))}</div></div>
+<div id="{P}g3" class="gls" style="left:545px;top:{u:.0f}px;width:330px;height:170px;padding:22px 26px"><div class="gs"><b class="gdot" style="background:#ff4b3e"></b>Render ediliyor</div><div class="gbar"><div id="{P}gb" class="gbf"></div></div><div class="gs2">1080p · kayıpsız renk</div></div>
+<div id="{P}g4" class="gls" style="left:545px;top:{u + 191:.0f}px;width:330px;height:150px;padding:22px 26px;display:flex;align-items:center"><div style="flex:1"><div class="gname">{esc(ad)}</div><div class="gs2">{esc(kul)}</div></div><img src="{c.kart(0)}" class="gav"></div>
+<div id="{P}g5" class="gls" style="left:545px;top:{u + 361:.0f}px;width:330px;height:290px;padding:22px"><div style="display:flex;gap:16px;align-items:center"><div class="gico">{spark(54, "#fff")}</div><div><div class="glab" style="font-size:16px;letter-spacing:1.5px">ŞİMDİ DÜZENLENİYOR</div><div class="gname" style="font-size:30px">{esc(e.get("calan", "Arka plan sesi"))}</div><div class="gs2">{esc(e.get("calan_alt", "ses · 25 sn"))}</div></div></div><div class="gpb"><div id="{P}gp"></div></div><div class="gctl"><span>⏮</span><span style="font-size:52px">▶</span><span>⏭</span></div></div>
+<div id="{P}g6" class="gls" style="left:605px;top:{u + 672:.0f}px;width:270px;height:270px;border-radius:50%;display:flex;align-items:center;justify-content:center"><div class="gring"><div>{esc(e.get("halka", "50"))}<br><span>{esc(e.get("halka_etiket", "fps"))}</span></div></div></div>'''
     h += c.kesik(a, b)
-    h += f'<div id="{P}g5" class="gpill">Claude ile <b style="color:#FFB08A;margin-left:12px">düzenlendi</b></div>'
-    for j in range(6):
+    h += f'<div id="{P}g7" class="gpill">Claude ile <b style="color:#FFB08A;margin-left:12px">düzenlendi</b></div>'
+    for j in range(8):
         giris(c, f"#{P}g{j}", a, j, 0.07); c.yuzen(f"#{P}g{j}", a + 0.5 + j * 0.05, 8 + (j % 3) * 4, max(0.4, (b - a - 0.6) / 2))
     c.T(f"#{P}gb", "{width:'15%'}", "{width:'92%'}", a + 0.1, b - a - 0.2, "power1.inOut")
+    c.T(f"#{P}gp", "{width:'10%'}", "{width:'70%'}", a + 0.1, b - a - 0.2, "none")
     return h
 
 
-@efekt("belgesel", "Siyah-beyaz sen, başının arkasında turuncu daire, satır satır başlık, isim bandı, Takip et → Takiptesin", kesik=True, takma=("red-collage", "documentary"))
+@efekt("belgesel", "Siyah-beyaz sen köşede, başının arkasında turuncu daire, sağ üstte satır satır başlık, isim bandı, Takip et → Takiptesin", kesik=True, takma=("red-collage", "documentary"))
 def fx_belgesel(c, e, P):
     a, b = e["bas"], e["bit"]; fx, fy, fw = c.yuz_ort(a, b)
-    satir = parca(e.get("metin", "TEK KLİP.|SIFIR UYGULAMA."))
-    renk = e.get("renk", TURUNCU); r = 1.15 * fw
-    sag = fx < W / 2
-    g = "filter:grayscale(1) contrast(1.12) brightness(.9);"
+    satir = parca(e.get("metin", "TEK KLİP.|25 EFEKT.|0 UYGULAMA."))
+    renk = e.get("renk", TURUNCU); sk = 1.15
+    # kişiyi sol alta kaydır: yüz (290, 1118) civarına gelir
+    tx = 290 - (540 + (fx - 540) * sk); ty = 1118 - (960 + (fy - 960) * sk)
+    nx, ny, nw = 290, 1118, fw * sk; r = 0.71 * nw
+    g = f"filter:grayscale(1) contrast(1.12) brightness(.9);transform:translate({tx:.0f}px,{ty:.0f}px) scale({sk});transform-origin:540px 960px;"
     ts = "".join(f'<div id="{P}l{i}">{esc(" ".join(s.split()[:-1]))} <em>{esc(s.split()[-1])}</em></div>' if len(s.split()) > 1 else f'<div id="{P}l{i}"><em>{esc(s)}</em></div>' for i, s in enumerate(satir))
-    c.css("belgesel", f""".bbg{{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 40% 40%,#3a1a08 0%,#140904 55%,#050302 100%)}}
-.bbg:after{{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,140,60,.07) 2px,transparent 2px),linear-gradient(90deg,rgba(255,140,60,.07) 2px,transparent 2px);background-size:90px 90px}}
-.btl{{position:absolute;color:#fff;font:400 135px Bebas;line-height:.95;letter-spacing:2px}}.btl em{{font-style:normal}}
-.bln{{display:inline-block;color:#fff;font:400 72px Bebas;padding:8px 22px 0;letter-spacing:3px}}.blh{{color:#fff;font-size:34px;margin-top:12px;opacity:.85}}
-.bfol{{position:absolute;color:#fff;font-size:42px;font-weight:700;border-radius:18px;padding:18px 44px}}""")
-    yer = "right:50px;text-align:right" if sag else "left:50px;text-align:left"
+    c.css("belgesel", """.bbg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 30% 40%,#3a1a08 0%,#140904 55%,#050302 100%)}
+.bbg:after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,140,60,.07) 2px,transparent 2px),linear-gradient(90deg,rgba(255,140,60,.07) 2px,transparent 2px);background-size:90px 90px}
+.btop{position:absolute;left:70px;top:150px;color:rgba(255,255,255,.75);font-size:26px;letter-spacing:6px;font-weight:600}
+.btl{position:absolute;right:50px;top:300px;text-align:right;color:#fff;font:400 135px Bebas;line-height:.95;letter-spacing:2px}.btl em{font-style:normal}
+.bln{display:inline-block;color:#fff;font:400 72px Bebas;padding:8px 22px 0;letter-spacing:3px}.blh{color:#fff;font-size:34px;margin-top:12px;opacity:.85}
+.bfol{position:absolute;color:#fff;font-size:42px;font-weight:700;border-radius:18px;padding:18px 44px}""")
     h = f'''<div id="{P}bg" class="bbg"></div>
-<div id="{P}dk" style="position:absolute;left:{fx - r:.0f}px;top:{fy - r - 0.1 * fw:.0f}px;width:{2 * r:.0f}px;height:{2 * r:.0f}px;border-radius:50%;background:radial-gradient(circle,{renk} 0%,{renk} 60%,#0000 100%);box-shadow:0 0 90px 30px {renk}88"></div>
-<div class="btl" style="{yer};top:{max(120, fy - 1.9 * fw):.0f}px">{ts.replace("<em>", f'<em style="color:{renk}">')}</div>'''
+<div id="{P}dk" style="position:absolute;left:{nx - 0.05 * nw - r:.0f}px;top:{ny - 0.09 * nw - r:.0f}px;width:{2 * r:.0f}px;height:{2 * r:.0f}px;border-radius:50%;background:radial-gradient(circle,#FF8A3D 0%,{renk} 60%,#d4560f 100%);box-shadow:0 0 90px 30px {renk}8c,0 0 220px 80px {renk}40"></div>
+<div id="{P}ut" class="btop">{esc(e.get("ust", "CLAUDE İLE KURGU")).upper()}</div>
+<div class="btl">{ts.replace("<em>", '<em style="color:#FF8A3D">')}</div>'''
     h += c.kesik(a, b, g)
-    h += f'''<div style="position:absolute;left:60px;top:1560px"><div class="bln" style="background:{renk}">{esc(e.get("ad", "ADIN SOYADIN").upper())}</div><div class="blh">{esc(e.get("kullanici", "@kullanici"))}</div></div>
+    h += f'''<div id="{P}bt" style="position:absolute;left:60px;top:1560px"><div class="bln" style="background:{renk}">{esc(e.get("ad", "ADIN SOYADIN").upper())}</div><div class="blh">{esc(e.get("kullanici", "@kullanici"))}</div></div>
 <div id="{P}fo" class="bfol" style="right:60px;top:1575px;background:{renk}"><span id="{P}f1">Takip et</span><span id="{P}f2" style="display:none">Takiptesin</span></div>
 <div id="{P}cu" style="position:absolute;left:880px;top:1620px;filter:drop-shadow(0 4px 8px rgba(0,0,0,.5))">{IMLEC}</div>'''
     c.T(f"#{P}bg", "{opacity:0}", "{opacity:1}", a, 0.2, "none")
-    c.T(f"#{P}dk", "{scale:0.5,opacity:0}", "{scale:1,opacity:1}", a + 0.05, 0.5)
-    for i in range(len(satir)): c.T(f"#{P}l{i}", "{opacity:0,x:60}", "{opacity:1,x:0}", a + 0.25 + i * 0.17, 0.2)
-    t = a + min(b - a - 0.4, 1.0)
+    c.T(f"#{P}dk", "{scale:0.6,opacity:0}", "{scale:1,opacity:1}", a + 0.05, 0.6)
+    c.yuzen(f"#{P}dk", a + 0.7, 12, max(0.4, (b - a - 0.8) / 2))
+    c.T(f"#{P}ut", "{opacity:0,y:-20}", "{opacity:1,y:0}", a + 0.6, 0.3)
+    c.T(f"#{P}bt", "{x:-500}", "{x:0}", a + 0.6, 0.4)
+    for i in range(len(satir)): c.T(f"#{P}l{i}", "{opacity:0,x:60}", "{opacity:1,x:0}", a + 0.8 + i * 0.17, 0.18)
+    t = a + min(b - a - 0.3, 0.8 + len(satir) * 0.17 + 0.35)
     c.T(f"#{P}cu", "{x:260,y:300,opacity:0}", "{x:0,y:0,opacity:1}", t - 0.35, 0.3)
     c.S(f"#{P}f1", '{display:"none"}', t); c.S(f"#{P}f2", '{display:"inline"}', t)
-    c.S(f"#{P}fo", '{backgroundColor:"#fff",color:"#111"}', t)
+    c.S(f"#{P}fo", '{backgroundColor:"#fff",color:"#111",scale:0.94}', t); c.T(f"#{P}fo", "{scale:0.94}", "{scale:1}", t + 0.04, 0.15)
     return h
 
 
@@ -206,7 +220,8 @@ def fx_yorunge(c, e, P):
                 else: c.J.append(f'tl.to("#{P}o{i}{k}", {{{v},duration:{adim},ease:"none"}}, {c.fr(t - adim):.4f});')
             if f != st:
                 c.S(f"#{P}o{i}f", f"{{opacity:{1 if f else 0}}}", t); c.S(f"#{P}o{i}b", f"{{opacity:{0 if f else 1}}}", t); st = f
-    return arka + c.kesik(a, b) + on
+    c.T(f"#{P}dk", "{opacity:0}", "{opacity:1}", a, 0.25, "none")
+    return f'<div id="{P}dk" style="position:absolute;inset:0;background:rgba(0,0,0,.25)"></div>' + arka + c.kesik(a, b) + on
 
 
 @efekt("arka-kelime", "Dev bir kelime arkana düşer", kesik=True, takma=("backdrop-word", "backdrop", "kelime"))
@@ -230,6 +245,8 @@ def fx_spot(c, e, P):
     h = f'''<div id="{P}d" style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 45% at {fx / W * 100:.0f}% {fy / H * 100:.0f}%,rgba(0,0,0,.25),rgba(0,0,0,.88) 80%)"></div>
 <div id="{P}n" style="position:absolute;left:-40px;right:-40px;top:{fy - 1.05 * fw - boy * 0.5:.0f}px;text-align:center;font:italic 500 {boy}px Playfair;color:#fff1e3;text-shadow:0 0 8px #fff,0 0 22px {renk},0 0 48px {renk},0 0 90px {renk}">{esc(s)}</div>'''
     h += c.kesik(a, b, "filter:brightness(.9);")
+    h += f'<div id="{P}v" style="position:absolute;inset:0;background:radial-gradient(ellipse 70% 55% at {fx / W * 100:.0f}% {fy / H * 100:.0f}%,transparent 55%,rgba(0,0,0,.6))"></div>'
+    c.T(f"#{P}v", "{opacity:0}", "{opacity:1}", a, 0.25, "none")
     c.T(f"#{P}d", "{opacity:0}", "{opacity:1}", a, 0.25, "none")
     c.S(f"#{P}n", "{opacity:0}", a)
     for t, o in ((0.25, 1), (0.33, 0.2), (0.41, 1), (0.49, 0.4), (0.55, 1)): c.S(f"#{P}n", f"{{opacity:{o}}}", a + t)
@@ -507,12 +524,13 @@ def fx_grafik(c, e, P):
     ort = sum(deg) / n
     vst, kst = pencere_yuz(c, e, 36, 965, W - 72, H - 965)
     h = f'''<div style="position:absolute;inset:0;background:{KREM};background-image:linear-gradient(rgba(150,140,120,.13) 1.5px,transparent 1.5px),linear-gradient(90deg,rgba(150,140,120,.13) 1.5px,transparent 1.5px);background-size:44px 44px">
-<div style="position:absolute;left:60px;top:80px;font-weight:800;font-size:68px;color:{MUREKKEP};letter-spacing:-1.5px;line-height:1.12">{esc(bas[0])}<br><span style="border-bottom:5px solid #C9452E"><em style="font-family:Playfair;font-weight:600;color:#C9452E">{esc(bas[1])}</em></span></div>
+<div id="{P}tl" style="position:absolute;left:60px;top:80px;font-weight:800;font-size:68px;color:{MUREKKEP};letter-spacing:-1.5px;line-height:1.12">{esc(bas[0])}<br><span style="border-bottom:5px solid #C9452E"><em style="font-family:Playfair;font-weight:600;color:#C9452E">{esc(bas[1])}</em></span></div>
 <div id="{P}av" style="position:absolute;left:150px;right:40px;top:{Y0 - ort / mx * HH:.0f}px;border-top:3px dashed #D9583D;transform-origin:0 50%"><span style="position:absolute;right:0;top:-38px;font:26px Menlo,monospace;color:#D9583D">ort. {esc(e.get("ortalama", f"{ort:.3g}".replace(".", ",")))}</span></div>{bars}
 <div id="{P}w" style="position:absolute;left:36px;right:36px;top:965px;bottom:0;border-radius:56px 56px 0 0;overflow:hidden;box-shadow:0 -6px 30px rgba(0,0,0,.12)">{c.video(a, b, vst)}</div>
 <div id="{P}kk" style="position:absolute;inset:0">{c.kesik(a, b, kst)}</div></div>'''
     for j in range(n): c.T(f"#{P}b{j}", "{scaleY:0}", "{scaleY:1}", a + 0.25 + j * 0.08, 0.45)
     c.T(f"#{P}av", "{scaleX:0}", "{scaleX:1}", a + 0.7, 0.4, "power2.out")
+    c.T(f"#{P}tl", "{y:-30,opacity:0}", "{y:0,opacity:1}", a + 0.05, 0.35)
     c.T(f"#{P}w", "{y:300}", "{y:0}", a, 0.45); c.T(f"#{P}kk", "{y:300}", "{y:0}", a, 0.45)
     return h
 
@@ -595,6 +613,10 @@ def yuz_izi(klip, dur, fps, cache):
     json.dump(out, open(cache + ".tmp", "w")); os.replace(cache + ".tmp", cache); return out
 
 
+def model_var(ad):
+    return any(os.path.exists(os.path.join(d, ad)) for d in (os.path.join(KOK, "models"), os.path.expanduser("~/.u2net")))
+
+
 def maske_motoru(kaliteli):
     import onnxruntime as ort
     adlar = ["birefnet-portrait.onnx"] if kaliteli else ["u2net_human_seg.onnx"]
@@ -612,7 +634,8 @@ def maske_motoru(kaliteli):
     sys.exit("Maske modeli yok. Önce: bash scripts/kurulum.sh" + (" (kaliteli mod için BiRefNet gerekir)" if kaliteli else ""))
 
 
-def kesikleri_yap(c, is_kl, kaliteli, fps):
+def kesikleri_yap(c, is_kl, kaliteli, fps, kareler=None):
+    """kareler verilirse (kontrol modu) sadece o anlara maske çıkarılır, diğer kareler en yakınınkini kullanır."""
     mas = None; mk = os.path.join(is_kl, "work", "mk" + ("_k" if kaliteli else "_h")); os.makedirs(mk, exist_ok=True)
     for i, (a, b) in enumerate(c.kesikler):
         n = int(math.ceil((b - a + 0.05) * fps)) + 1; ilk = int(round(a * fps))
@@ -620,8 +643,16 @@ def kesikleri_yap(c, is_kl, kaliteli, fps):
         sh("ffmpeg", "-v", "error", "-y", "-ss", f"{a:.4f}", "-i", os.path.join(is_kl, "assets", "klip.mov"), "-frames:v", str(n), "-start_number", "0", os.path.join(rgb, "%05d.png"))
         kk = os.path.join(is_kl, "work", f"kesik{i}"); shutil.rmtree(kk, ignore_errors=True); os.makedirs(kk)
         dosyalar = sorted(glob.glob(os.path.join(rgb, "*.png")))
+        hedef = None
+        if kareler:
+            ic = [int(round(t * fps)) - ilk for t in kareler if a - 0.1 <= t <= b + 0.1]
+            hedef = [min(max(x, 0), len(dosyalar) - 1) for x in ic] or [len(dosyalar) // 2]
         for j, f in enumerate(dosyalar):
-            m = os.path.join(mk, f"{ilk + j:06d}.png")
+            jj = min(hedef, key=lambda x: abs(x - j)) if hedef else j
+            m = os.path.join(mk, f"{ilk + jj:06d}.png")
+            if jj != j:
+                if not os.path.exists(m): mas = mas or maske_motoru(kaliteli); mas(Image.open(dosyalar[jj]).convert("RGB")).save(m)
+                im = Image.open(f).convert("RGB"); im.putalpha(Image.open(m).convert("L")); im.save(os.path.join(kk, f"{j:05d}.png")); continue
             im = Image.open(f).convert("RGB")
             if not os.path.exists(m):
                 mas = mas or maske_motoru(kaliteli); mas(im).save(m)
@@ -646,7 +677,7 @@ def main():
     p = argparse.ArgumentParser(description="25 kurgu efekti")
     p.add_argument("args", nargs="*"); p.add_argument("--plan"); p.add_argument("--bas", type=float); p.add_argument("--bit", type=float)
     p.add_argument("--opt", action="append", default=[]); p.add_argument("--kare", help="kontrol kareleri: 4.5,9.2")
-    p.add_argument("--kaliteli", action="store_true", help="BiRefNet maske (yavaş, saç teli net)"); p.add_argument("--kartlar", help="Reels kapakları klasörü")
+    p.add_argument("--hizli", action="store_true", help="U2Net maske (hızlı ama saç kenarı kaba)"); p.add_argument("--kaliteli", action="store_true", help=argparse.SUPPRESS); p.add_argument("--kartlar", help="Reels kapakları klasörü")
     p.add_argument("--liste", action="store_true")
     a = p.parse_args()
     if a.liste:
@@ -710,7 +741,9 @@ tl.set({{}}, {{}}, {dur - 0.01:.3f});
 window.__timelines["main"] = tl;
 </script></body></html>'''
     if c.kesikler:
-        print(f"kişi ayrılıyor ({'kaliteli' if a.kaliteli else 'hızlı'})…", flush=True); kesikleri_yap(c, is_kl, a.kaliteli, fps)
+        kal = not a.hizli and model_var("birefnet-portrait.onnx")
+        if not a.hizli and not kal: print("UYARI: BiRefNet yok, hızlı maskeye geçildi (saç kenarı kaba olabilir). Kurmak için: bash scripts/kurulum.sh", flush=True)
+        print(f"kişi ayrılıyor ({'kaliteli' if kal else 'hızlı'})…", flush=True); kesikleri_yap(c, is_kl, kal, fps, [float(x) for x in a.kare.split(",")] if a.kare else None)
     open(os.path.join(is_kl, "index.html"), "w", encoding="utf8").write(html)
     if a.kare:
         r = subprocess.run(["npx", "--yes", "hyperframes@0.6.16", "snapshot", "--at", a.kare, "."], cwd=is_kl, capture_output=True, text=True)

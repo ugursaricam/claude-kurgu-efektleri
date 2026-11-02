@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Bir kez çalıştır; tekrar çalıştırmak güvenli. Sonunda HAZIR yazar.
-# --kaliteli: saç teli net kişi ayırma için BiRefNet modelini de indirir (~970 MB).
+# Varsayılan: saç teli net kişi ayırma için BiRefNet (~970 MB) ve yedek olarak U2Net indirilir.
+# --hizli: sadece U2Net (~170 MB); saç kenarı daha kaba olur.
 set -e
 KOK="$(cd "$(dirname "$0")/.." && pwd)"; cd "$KOK"
 command -v ffmpeg >/dev/null && command -v ffprobe >/dev/null || { echo "EKSIK_FFMPEG  (Mac: brew install ffmpeg)"; exit 1; }
@@ -15,6 +16,6 @@ done
 mkdir -p models
 indir() { [ -f "models/$1" ] || [ -f "$HOME/.u2net/$1" ] || { echo "$1 indiriliyor..."; curl -L --fail -o "models/$1.part" "$2" && mv "models/$1.part" "models/$1"; }; }
 indir u2net_human_seg.onnx https://github.com/danielgatis/rembg/releases/download/v0.0.0/u2net_human_seg.onnx
-[ "$1" = "--kaliteli" ] && indir birefnet-portrait.onnx https://github.com/danielgatis/rembg/releases/download/v0.0.0/BiRefNet-portrait-epoch_150.onnx
+[ "$1" = "--hizli" ] || indir birefnet-portrait.onnx https://github.com/danielgatis/rembg/releases/download/v0.0.0/BiRefNet-portrait-epoch_150.onnx
 npx --yes hyperframes@0.6.16 --version >/dev/null 2>&1 || true
 echo HAZIR

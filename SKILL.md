@@ -14,7 +14,7 @@ Aşağıdaki yollar bu skill'in klasörüne göredir. Komutlarda mutlak yolu kul
 - `EKSIK_FFMPEG` çıkarsa: `brew install ffmpeg`.
 - `EKSIK_NODE` çıkarsa: `brew install node`.
 - `EKSIK_PYTHON` çıkarsa: `brew install python@3.12`, sonra kurulumu tekrar çalıştır.
-- Kaliteli maske istenirse: `bash scripts/kurulum.sh --kaliteli`. BiRefNet modelini indirir (~970 MB).
+- Kurulum, saç tellerini net ayıran BiRefNet modelini indirir (~970 MB). İnternet ya da yer sorunu varsa `--hizli` ile sadece küçük U2Net modeli iner.
 
 ## 2. Videoyu ve efekti al
 - **Video:** Kullanıcı sohbete sürükler ya da yolunu verir. Dikey telefon videosu en iyisidir.
@@ -43,7 +43,7 @@ Aşağıdaki yollar bu skill'in klasörüne göredir. Komutlarda mutlak yolu kul
    .venv/bin/python scripts/efekt.py --plan <plan.json> <video> <video-adı>_efekt.mp4
    ```
    - Çıktı kaynağın fps'ini, rengini (bt709) ve sesini aynen korur.
-   - Kişi ayırma için saç telleri tam net olsun istenirse `--kaliteli` ekle (yavaş).
+   - Kişi ayırma varsayılan olarak kaliteli moddadır (BiRefNet): saç kenarı net ama yavaş, kare başına birkaç saniye sürer. Kullanıcı hız isterse `--hizli` ekle; saç kenarı kabalaşır, bunu ona söyle.
 4. Dosyanın nerede olduğunu söyle. Tek satırla paylaşmadan önce izlemesini hatırlat: Claude taslak çıkarır, onay ondadır.
 
 Tek efekt için plana gerek yok:

@@ -78,7 +78,7 @@ Bütün efektler yüzünü takip eder. Yüzünü kapatacak her şey başının a
 - Zamanlamayı düz cümleyle söyle ("'izle' dediğimde"). Claude tam saniyeyi bulur.
 - `yorunge`, `gurultu`, `profil-duvari` ve `zaman-cizelgesi` için kendi Reels'lerini kullanmak mı istiyorsun? Claude'a ekran görüntülerinin olduğu klasörü ver.
 - Grafiklerde, sayaçlarda ve manşetlerde gerçek sayılarını kullan. Claude'a ne olduklarını söyle.
-- Kişiyi ayırmanın varsayılanı hızlı moddur. Saç telleri tam net olsun istersen "kaliteli maske" de. Bu mod daha yavaştır.
+- Kişi ayırma varsayılan olarak kaliteli moddadır: saç telleri net çıkar ama render biraz sürer. Acelen varsa "hızlı maske" de; saç kenarları kabalaşır.
 
 ## Açık konuşalım
 - Bunlar **başlangıç sürümleri**. Benim Reels'imdeki kurguyla birebir aynı değiller; o kurguda ses tasarımı ve elle ayarlanmış zamanlama da var.
